@@ -1,0 +1,21 @@
+.site-header {
+	position: relative;
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+	max-width: 1024px;
+	padding: 20px 20px;
+	margin: 0 auto;
+
+	.custom-logo-link {
+		img {
+			width: 80px;
+		}
+	}
+}
+
+.site-title a {
+	color: $black;
+	text-decoration: none;
+	text-transform: uppercase;
+}

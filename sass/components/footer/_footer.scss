@@ -1,0 +1,58 @@
+.site-footer {
+	background: $tangaroa;
+	padding: 50px 0;
+
+	.site-info {
+		display: flex;
+		gap: 20px;
+		justify-content: space-between;
+		max-width: 1024px;
+		padding: 0 20px;
+		margin: 0 auto;
+	}
+
+	&__logo {
+		width: 120px;
+		height: 120px;
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+
+		li {
+			margin-bottom: 10px;
+
+			&:nth-last-child(1) {
+				margin-bottom: 0;
+			}
+
+			&::marker {
+				color: transparent;
+			}
+
+			a {
+				position: relative;
+				color: $white;
+				text-decoration: none;
+
+				&::before {
+					content: '';
+					position: absolute;
+					width: 0;
+					height: 1px;
+					background: $white;
+					left: 0;
+					bottom: 0;
+					transition: 0.3s ease;
+				}
+		
+				&:hover {
+					&::before {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}

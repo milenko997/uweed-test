@@ -1,0 +1,185 @@
+.main-navigation {
+	display: flex;
+	gap: 20px;
+
+	ul {
+		display: none;
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+
+		ul {
+			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+			float: left;
+			position: absolute;
+			top: 100%;
+			left: -999em;
+			z-index: 99999;
+
+			ul {
+				left: -999em;
+				top: 0;
+			}
+
+			li {
+
+				&:hover > ul,
+				&.focus > ul {
+					display: block;
+					left: auto;
+				}
+			}
+
+			a {
+				width: 200px;
+			}
+		}
+
+		li:hover > ul,
+		li.focus > ul {
+			left: auto;
+		}
+	}
+
+	li {
+		position: relative;
+
+		&.current_page_item {
+			font-weight: bold;
+		}
+	}
+
+	a {
+		position: relative;
+		display: block;
+		text-decoration: none;
+		color: $black;
+
+		&::before {
+			content: '';
+			position: absolute;
+			width: 0;
+			height: 1px;
+			background: $black;
+			left: 0;
+			bottom: 0;
+			transition: 0.3s ease;
+		}
+
+		&:hover {
+			&::before {
+				width: 100%;
+			}
+		}
+	}
+}
+
+/* Small menu. */
+.menu-toggle,
+.main-navigation.toggled ul {
+	display: block;
+}
+
+.menu-toggle {
+	position: relative;
+	background: none;
+	border: none;
+	width: 30px;
+	height: 30px;
+	padding: 0;
+
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 3px;
+		background: $black;
+		left: 0;
+		transition: 0.3s ease;
+	}
+
+	&::before {
+		top: 10px;
+	}
+
+	&::after {
+		top: 20px;
+	}
+
+	&[aria-expanded="true"] {
+		&::before {
+			transform: translateY(-50%) rotate(45deg);
+			top: 50%;
+		}
+
+		&::after {
+			transform: translateY(-50%) rotate(-45deg);
+			top: 50%;
+		}
+	}
+}
+
+@media screen and (min-width: 37.5em) {
+
+	.menu-toggle {
+		display: none;
+	}
+
+	.main-navigation ul {
+		display: flex;
+		gap: 20px;
+	}
+}
+
+@media screen and (max-width: 37.5em) {
+	.main-navigation {
+		flex-direction: row-reverse;
+	}
+
+	.menu {
+		position: absolute;
+	}
+
+	.toggled .menu {
+		width: 100%;
+		padding: 10px;
+		background: $cararra;
+		left: 0;
+		top: 100%;
+		text-align: center;
+		z-index: 1;
+	}
+
+	.main-navigation {
+		li {
+			margin-bottom: 10px;
+
+			&:nth-last-child(1) {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+
+	.site-main & {
+		margin: 0 0 1.5em;
+	}
+
+	.nav-links {
+		display: flex;
+	}
+
+	.nav-previous {
+		flex: 1 0 50%;
+	}
+
+	.nav-next {
+		text-align: end;
+		flex: 1 0 50%;
+	}
+}
